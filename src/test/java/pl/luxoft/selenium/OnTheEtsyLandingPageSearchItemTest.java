@@ -25,7 +25,7 @@ public class OnTheEtsyLandingPageSearchItemTest {
     EmptySearchResultPagePO emptySearchResultPage;
 
     @BeforeMethod
-    public void testSetUp() throws InterruptedException {
+    public void testSetUp(){
         String chromeDriverBinaryPath = "D:\\dev\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", chromeDriverBinaryPath);
         driver = new ChromeDriver();
@@ -45,10 +45,10 @@ public class OnTheEtsyLandingPageSearchItemTest {
 
     @Test
     public void shouldGoToNoResultsFoundPageWhenUsingInvalidQuery(){
-        String searchQuery = "!@#2132131241249814219864127498142hrqi3h2981y981281498!*@&^$@!$@&";
+        String invalidSearchQuery = "!@#2132131241249814219864127498142hrqi3h2981y981281498!*@&^$@!$@&";
         landingPage.goTo();
         landingPage.acceptDefaultPrivacyPolicy();
-        landingPage.searchFor(searchQuery);
+        landingPage.searchFor(invalidSearchQuery);
         Assert.assertTrue(emptySearchResultPage.isVisible());
     }
 

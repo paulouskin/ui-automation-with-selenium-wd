@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -16,12 +18,14 @@ public class SearchResultPagePO {
     private static final By SEARCH_RESULT_ITEMS = By.xpath("//h3[contains(@class,'v2-listing-card__title')]");
     private WebDriver driver;
     private WebDriverWait wait;
+    private Logger logger = LoggerFactory.getLogger(SearchResultPagePO.class);
     public SearchResultPagePO(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_PERIOD));
     }
 
     public boolean isSearchResultsContainsRequiredItemsForQuery(String searchQuery) {
+        logger.info("Verifying search result items contains query '" + searchQuery +"'");
         var tokinezedSearchQuery = Arrays.stream(searchQuery.split(" ")).toList();
         return getItemTitles().stream()
                         .limit(1)
