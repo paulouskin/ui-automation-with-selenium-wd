@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.luxoft.selenium.pageelements.SearchField;
 
 import java.time.Duration;
@@ -13,6 +15,8 @@ public class EtsyLandingPagePO {
 
     private static final String HOST = "https://www.etsy.com";
     private static final long DEFAULT_WAIT_PERIOD = 5;
+
+    private Logger logger = LoggerFactory.getLogger(EtsyLandingPagePO.class);
     private static final String ACCEPT_DEFAULT_PRIVACY_POLICY_LOCATOR =
             "//button[@data-gdpr-single-choice-accept='true']";
     private static final By UPDATE_SETTING_BUTTON_LOCATOR = By.cssSelector("[data-gdpr-open-full-settings]");
@@ -30,6 +34,7 @@ public class EtsyLandingPagePO {
     }
 
     public void goTo() {
+        logger.info("Navigating to the etsy.com landing page");
         driver.get(HOST);
     }
 
