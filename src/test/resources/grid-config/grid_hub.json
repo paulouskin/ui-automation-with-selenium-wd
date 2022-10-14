@@ -1,0 +1,12 @@
+{
+	"configuration":
+	{
+		"newSessionWaitTimeout": -1,
+		"servlets": [],
+		"throwOnCapabilityNotPresent": true,
+		"nodePolling": 5000,
+		"cleanUpCycle": 5000,
+		"timeout": 300000,
+		"maxSession":5
+	}
+}

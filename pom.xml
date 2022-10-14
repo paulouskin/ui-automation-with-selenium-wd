@@ -17,6 +17,8 @@
         <testng.version>7.6.1</testng.version>
         <threads>1</threads>
         <browser>chrome</browser>
+        <remote>false</remote>
+        <seleniumGridUrl/>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -95,6 +97,8 @@
                     <threadCount>${threads}</threadCount>
                     <systemProperties>
                         <browser>${browser}</browser>
+                        <remoteDriver>${remote}</remoteDriver>
+                        <gridUrl>${seleniumGridUrl}</gridUrl>
                     </systemProperties>
                 </configuration>
                 <executions>

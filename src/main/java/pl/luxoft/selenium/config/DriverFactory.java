@@ -6,6 +6,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class DriverFactory {
 
     private Logger logger = LoggerFactory.getLogger(DriverFactory.class);
@@ -37,7 +40,19 @@ public class DriverFactory {
     private void instantiateWebDriver(DriverType selectedDriverType) {
         logger.info("Selected browser: " + selectedDriverType);
         DesiredCapabilities dc = new DesiredCapabilities();
-        webDriver = selectedDriverType.getWebDriverObject(dc);
+        boolean useRemoteWebDriver = Boolean.parseBoolean(System.getProperty("remoteDriver"));
+        if (useRemoteWebDriver){
+            dc.setBrowserName(System.getProperty("browser"));
+            URL gridUrl;
+            try {
+                gridUrl = new URL(System.getProperty("gridUrl"));
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            webDriver = new RemoteWebDriver(gridUrl, dc);
+        } else {
+            webDriver = selectedDriverType.getWebDriverObject(dc);
+        }
     }
 
     public void quitDriver() {
