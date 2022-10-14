@@ -18,6 +18,8 @@ public class BaseExerciseTest {
     String LOADING_IMAGES = ADDRESS + "loading-images.html";
     String SLOW_CALCULATOR = ADDRESS + "slow-calculator.html";
 
+    String LONG_PAGE = ADDRESS + "long-page.html";
+
     protected Logger logger = LoggerFactory.getLogger(BaseExerciseTest.class);
 
     protected WebDriver driver;
